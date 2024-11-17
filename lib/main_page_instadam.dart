@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile_screen.dart';
 import 'settings_screen.dart';
-import 'new_photo.dart';  // Importa el archivo actualizado para subir foto
+import 'new_photo.dart';
 
 void main() {
   runApp(MainPageInstaDam());
@@ -13,7 +13,7 @@ class MainPageInstaDam extends StatelessWidget {
     return MaterialApp(
       title: 'InstaDam',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.pink,
       ),
       home: MainPage(),
     );
@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('InstaDam'),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.pink,
       ),
       body: MainPageBody(),
       bottomNavigationBar: BottomNavBar(),
@@ -35,6 +35,18 @@ class MainPage extends StatelessWidget {
 }
 
 class MainPageBody extends StatelessWidget {
+  final List<String> imagePaths = [
+    'assets/images/imagen1.jpg',
+    'assets/images/imagen2.jpg',
+    'assets/images/imagen3.jpg',
+    'assets/images/imagen4.jpg',
+    'assets/images/imagen5.png',
+    'assets/images/imagen6.jpg',
+    'assets/images/imagen7.jpg',
+    'assets/images/imagen8.jpg',
+    'assets/images/imagen9.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -49,7 +61,7 @@ class MainPageBody extends StatelessWidget {
               crossAxisSpacing: 4.0, // Espacio horizontal entre imágenes
               mainAxisSpacing: 4.0, // Espacio vertical entre imágenes
             ),
-            itemCount: 20, // Número de imágenes
+            itemCount: imagePaths.length, // Número de imágenes
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -62,7 +74,7 @@ class MainPageBody extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
-                    'assets/images/instadam_logo.png', // Asegúrate de cambiar la imagen
+                    imagePaths[index], // Muestra la imagen correspondiente desde la lista
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'InstaDam',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.pink,
       ),
       home: BottomNavigationWidget(), // Canviem a BottomNavigationWidget
     );
