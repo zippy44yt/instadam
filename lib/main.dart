@@ -34,7 +34,13 @@ class BottomNavigationWidget extends StatefulWidget {
 
 class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   int _selectedIndex = 1; // Índex inicial
-  static List<Widget> _sections = [SignUpScreen(),LoginScreen(),HomeScreen(), ProfileScreen(), SettingsScreen()];
+  static List<Widget> _sections = [
+    SignUpScreen(),
+    LoginScreen(),
+    HomeScreen(),
+    ProfileScreen(),
+    SettingsScreen()
+  ];
 
   void _onItemTap(int index) {
     setState(() {
@@ -54,22 +60,27 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.search_rounded),
             label: 'Search',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.add_box_outlined),
             label: 'Upload',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.movie),
             label: 'video',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
             label: 'Profile',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
