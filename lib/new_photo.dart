@@ -39,7 +39,7 @@ class _NewPhotoState extends State<NewPhoto> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Subir Foto'),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.pink,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

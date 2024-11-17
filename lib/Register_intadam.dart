@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'main_page_instadam.dart';
+
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
@@ -85,8 +87,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Acción de registro
-                print('Nombre: ${_nameController.text}');
+                // Validaciones antes de redirigir a la pantalla principal
+                if (_nameController.text.isNotEmpty &&
+                    _surnameController.text.isNotEmpty &&
+                    _usernameController.text.isNotEmpty &&
+                    _passwordController.text.isNotEmpty &&
+                    _passwordController.text ==
+                        _confirmPasswordController.text) {
+                  // Navegar a la pantalla principal
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => MainPageInstaDam()),
+                  );
+                } else {
+                  // Mostrar un mensaje de error si los datos no son válidos
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Por favor, completa todos los campos correctamente.'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
               },
               child: Text('Registrat'),
             ),
