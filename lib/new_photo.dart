@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SettingsScreen extends StatelessWidget {
+class NewPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Configuración'),
+        title: Text('Nueva Foto'),
       ),
       body: Center(
         child: Text(
-          'Pantalla de Configuración',
+          'Pantalla para Subir Nueva Foto',
           style: TextStyle(fontSize: 24),
         ),
       ),

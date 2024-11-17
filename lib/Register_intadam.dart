@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/flutter_logo.gif', height: 200),
+            Image.asset('assets/images/instadam_logo.png', height: 200),
             SizedBox(height: 20),
             Text(
               'InstaDam',

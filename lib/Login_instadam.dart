@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/Register_intadam.dart';
+import 'main_page_instadam.dart'; // Importa la página principal que quieres redirigir
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/flutter_logo.gif', height: 200),
+            Image.asset('assets/images/instadam_logo.png', height: 200),
             SizedBox(height: 20),
             Text(
               'InstaDam',
@@ -52,7 +53,11 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                print('Text introduït: ${_controller.text}');
+                // Redirige a la página principal después de iniciar sesión
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainPageInstaDam()), // Cambia a MainPageInstaDam
+                );
               },
               child: Text('Iniciar Sessió'),
             ),
@@ -73,4 +78,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
