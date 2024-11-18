@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'main_page_instadam.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -12,14 +11,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _surnameController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-  TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registrar-se'),
+        title: Text('Registro'),
         backgroundColor: Colors.white,
       ),
       body: Padding(
@@ -27,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/instadam_logo.png', height: 200),
+            Image.asset('assets/images/instadam_logo.jpg', height: 200),
             SizedBox(height: 20),
             Text(
               'InstaDam',
@@ -41,36 +39,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
             TextField(
               controller: _nameController,
               decoration: InputDecoration(
-                labelText: 'Nom',
+                labelText: 'Nombre',
                 border: OutlineInputBorder(),
-                hintText: 'Introdueix el teu Nom',
+                hintText: 'Introduce tu Nombre',
               ),
             ),
             SizedBox(height: 10),
             TextField(
               controller: _surnameController,
               decoration: InputDecoration(
-                labelText: 'Cognom',
+                labelText: 'Apellido',
                 border: OutlineInputBorder(),
-                hintText: 'Introdueix el teu Cognom',
+                hintText: 'Introduce tu Apellido',
               ),
             ),
             SizedBox(height: 10),
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
-                labelText: 'Nom d’Usuari',
+                labelText: 'Nombre de Usuario',
                 border: OutlineInputBorder(),
-                hintText: 'Introdueix el teu Usuari',
+                hintText: 'Introduce tu Usuario',
               ),
             ),
             SizedBox(height: 10),
             TextField(
               controller: _passwordController,
               decoration: InputDecoration(
-                labelText: 'Contrasenya',
+                labelText: 'Contraseña',
                 border: OutlineInputBorder(),
-                hintText: 'Introdueix la teva Contrasenya',
+                hintText: 'Introduce tu Contraseña',
               ),
               obscureText: true,
             ),
@@ -78,29 +76,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
             TextField(
               controller: _confirmPasswordController,
               decoration: InputDecoration(
-                labelText: 'Confirma la teva Contrasenya',
+                labelText: 'Confirma tu Contraseña',
                 border: OutlineInputBorder(),
-                hintText: 'Confirma la teva Contrasenya',
+                hintText: 'Confirma tu Contraseña',
               ),
               obscureText: true,
             ),
             SizedBox(height: 20),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.pink,
+                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
               onPressed: () {
-                // Validaciones antes de redirigir a la pantalla principal
                 if (_nameController.text.isNotEmpty &&
                     _surnameController.text.isNotEmpty &&
                     _usernameController.text.isNotEmpty &&
                     _passwordController.text.isNotEmpty &&
-                    _passwordController.text ==
-                        _confirmPasswordController.text) {
-                  // Navegar a la pantalla principal
+                    _passwordController.text == _confirmPasswordController.text) {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => MainPageInstaDam()),
                   );
                 } else {
-                  // Mostrar un mensaje de error si los datos no son válidos
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Por favor, completa todos los campos correctamente.'),
@@ -109,7 +110,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   );
                 }
               },
-              child: Text('Registrat'),
+              child: Text(
+                'Registrarse',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
