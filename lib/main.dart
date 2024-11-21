@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/Login_instadam.dart';
 import 'package:myapp2/Register_intadam.dart';
-import 'home_screen.dart'; // Importa la pantalla Home
-import 'profile_screen.dart'; // Importa la pantalla Profile
-import 'settings_screen.dart'; // Importa la pantalla Settings
+import 'home_screen.dart';
+import 'profile_screen.dart';
+import 'settings_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: BottomNavigationWidget(), // Canviem a BottomNavigationWidget
+      home: BottomNavigationWidget(),
     );
   }
 }
@@ -33,7 +33,7 @@ class BottomNavigationWidget extends StatefulWidget {
 }
 
 class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
-  int _selectedIndex = 1; // Índex inicial
+  int _selectedIndex = 1;
   static List<Widget> _sections = [
     SignUpScreen(),
     LoginScreen(),
@@ -44,7 +44,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
 
   void _onItemTap(int index) {
     setState(() {
-      _selectedIndex = index; // Actualitzem l'índex seleccionat
+      _selectedIndex = index;
     });
   }
 
@@ -52,7 +52,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: _sections[_selectedIndex], // Mostrem la secció basada en l'índex seleccionat
+      body: _sections[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
 
@@ -86,8 +86,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             label: 'Settings',
           ),
         ],
-        currentIndex: _selectedIndex, // Índex actual
-        onTap: _onItemTap, // Gestor d'events de tap
+        currentIndex: _selectedIndex,
+        onTap: _onItemTap,
       ),
     );
   }

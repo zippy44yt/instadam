@@ -23,7 +23,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController _controller = TextEditingController(); // Controlador para el TextField
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Asegúrate de que la ruta de la imagen sea correcta
+
             Image.asset('assets/images/flutter_logo.gif', height: 200),
-            SizedBox(height: 20), // Espacio entre la imagen y el texto
+            SizedBox(height: 20),
             Text(
               'Benvingut a MyApp!',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),

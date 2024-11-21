@@ -140,7 +140,7 @@ class MainPageBody extends StatelessWidget {
                         child: Image.asset(
                           imagePaths[index],
                           fit: BoxFit.cover,
-                          height: 250, // Ajusta la altura de la imagen para que se ajuste mejor
+                          height: 250,
                           width: containerWidth,
                         ),
                       ),

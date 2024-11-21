@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Iniciar Sesión'), // Cambiado a español
+        title: Text('Iniciar Sesión'),
         backgroundColor: Color(0xFFFFFFFF),
         foregroundColor: Colors.black,
         elevation: 0,
@@ -39,9 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
-                labelText: 'Usuario', // Cambiado a español
+                labelText: 'Usuario',
                 border: OutlineInputBorder(),
-                hintText: 'Introduce tu Usuario', // Cambiado a español
+                hintText: 'Introduce tu Usuario',
               ),
             ),
             SizedBox(height: 20),
@@ -49,9 +49,9 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: 'Contraseña', // Cambiado a español
+                labelText: 'Contraseña',
                 border: OutlineInputBorder(),
-                hintText: 'Introduce tu Contraseña', // Cambiado a español
+                hintText: 'Introduce tu Contraseña',
               ),
             ),
             SizedBox(height: 20),
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
               },
               child: Text(
-                'Iniciar Sesión', // Cambiado a español
+                'Iniciar Sesión',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
               },
               child: Text(
-                'Regístrate', // Cambiado a español
+                'Regístrate',
                 style: TextStyle(fontSize: 16, color: Colors.black),
               ),
             ),
