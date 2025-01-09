@@ -47,37 +47,132 @@ class MainPageBody extends StatelessWidget {
     'assets/images/imagen9.jpg',
   ];
 
+  final List<String> imageDescriptions = [
+    'Fantástico día en una cala de Benidorm',
+    'Disfrutando de los hermosos caminos de EE.UU.',
+    'Gran día para pescar',
+    'He encontrado este paraíso en el agua',
+    'Aquí Primico en el campo',
+    'Draw My Mind',
+    'Sin Demanda No hay Negocio',
+    'Vi este animal en el bosque',
+    'Mi pequeño perro y mi nuevo gatito :)',
+  ];
+
+  final List<String> headers = [
+    'SunnyLand77',
+    'RoadRiderhd',
+    'Skydiveryt4',
+    'Watersites',
+    'RaulHernandez01',
+    'DrawMYdreams',
+    'FrankCustaOfficial',
+    'WildForest',
+    'PedsStuff',
+  ];
+
+  final List<String> profileImages = [
+    'assets/profile/profile1.jpeg',
+    'assets/profile/profile2.jpeg',
+    'assets/profile/profile3.jpeg',
+    'assets/profile/profile4.jpeg',
+    'assets/profile/profile5.jpeg',
+    'assets/profile/profile6.jpeg',
+    'assets/profile/profile9.jpeg',
+    'assets/profile/profile8.jpeg',
+    'assets/profile/profile7.jpeg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Crea una cuadrícula de imágenes
           GridView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3, // Número de columnas en la cuadrícula
-              crossAxisSpacing: 4.0, // Espacio horizontal entre imágenes
-              mainAxisSpacing: 4.0, // Espacio vertical entre imágenes
+              crossAxisCount: 1,
+              crossAxisSpacing: 4.0,
+              mainAxisSpacing: 8.0,
             ),
-            itemCount: imagePaths.length, // Número de imágenes
+            itemCount: imagePaths.length,
             itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  // Acción al tocar la imagen (puedes añadir más detalles si deseas)
-                  showDialog(
-                    context: context,
-                    builder: (context) => ImageDialog(),
+              return LayoutBuilder(
+                builder: (context, constraints) {
+                  final containerWidth = constraints.maxWidth;
+
+                  return Column(
+                    children: [
+                      Container(
+                        width: containerWidth,
+                        padding: EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8),
+                            topRight: Radius.circular(8),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: AssetImage(profileImages[index]),
+                              radius: 20.0,
+                            ),
+                            SizedBox(width: 4.0),
+                            Expanded(
+                              child: Text(
+                                headers[index],
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          imagePaths[index],
+                          fit: BoxFit.cover,
+                          height: 250,
+                          width: containerWidth,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => ImageDialog(),
+                          );
+                        },
+                        child: Container(
+                          width: containerWidth,
+                          margin: EdgeInsets.only(top: 10.0),
+                          padding: EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.white),
+                          ),
+                          child: Text(
+                            imageDescriptions[index],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   );
                 },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    imagePaths[index], // Muestra la imagen correspondiente desde la lista
-                    fit: BoxFit.cover,
-                  ),
-                ),
               );
             },
           ),
@@ -91,25 +186,35 @@ class ImageDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Comentario y Like'),
+      title: Text('Post'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Escribe un comentario...',
-            ),
-          ),
           Row(
             children: [
               IconButton(
-                icon: Icon(Icons.thumb_up),
+                icon: Icon(Icons.thumb_up, color: Colors.black),
                 onPressed: () {
                   print('Like dado');
                 },
               ),
-              Text('Like'),
+              Text(
+                'Like',
+                style: TextStyle(color: Colors.grey),
+              ),
             ],
+          ),
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Escribe un comentario...',
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.pink),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black),
+              ),
+              labelStyle: TextStyle(color: Colors.black),
+            ),
           ),
         ],
       ),
@@ -118,7 +223,19 @@ class ImageDialog extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text('Cerrar'),
+          child: Text(
+            'Cerrar',
+            style: TextStyle(color: Colors.pink),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Enviar',
+            style: TextStyle(color: Colors.pink),
+          ),
         ),
       ],
     );
@@ -129,38 +246,57 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      type: BottomNavigationBarType.fixed,
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
-          label: 'Perfil',
+          icon: SizedBox(
+            height: 10,
+            child: Icon(Icons.home, color: Colors.pink),
+          ),
+          label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Configuración',
+          icon: SizedBox(
+            height: 10,
+            child: Icon(Icons.person, color: Colors.pink),
+          ),
+          label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.add_a_photo),
-          label: 'Nueva Foto', // Cambié el nombre del botón a 'Nueva Foto'
+          icon: SizedBox(
+            height: 10,
+            child: Icon(Icons.settings, color: Colors.pink),
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: SizedBox(
+            height: 10,
+            child: Icon(Icons.add_a_photo, color: Colors.pink),
+          ),
+          label: '',
         ),
       ],
       onTap: (index) {
         if (index == 0) {
-          // Navega a la pantalla de perfil
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MainPage()),
+          );
+        } else if (index == 1) {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ProfileScreen()),
           );
-        } else if (index == 1) {
-          // Navega a la pantalla de configuración
+        } else if (index == 2) {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => SettingsScreen()),
           );
-        } else if (index == 2) {
-          // Navega a la pantalla de subir fotos
+        } else if (index == 3) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => NewPhoto()), // Cambio a NewPhoto
+            MaterialPageRoute(builder: (context) => NewPhoto()),
           );
         }
       },

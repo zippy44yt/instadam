@@ -6,57 +6,90 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  bool _isLiked = false; // Estat inicial del "like"
+  bool _isLiked = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
-        backgroundColor: Color(0xFFCAB2EC),
+        backgroundColor: Colors.pink,
       ),
-      body: Center( // Centra el contingut
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ProfileDescription(
-              user: 'Pau',
-              description: 'Welcome to my profile!',
-            ),
-            SizedBox(height: 20),
-            _buildLikeButton(), // Botó de "m'agrades"
-          ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('assets/profile/profile10.jpeg')
+              ),
+              SizedBox(height: 20),
+              ProfileDescription(
+                user: 'Zippy44yt',
+                description: 'Bienvenido a mi perfil de InstaDam',
+              ),
+              SizedBox(height: 20),
+              _buildLikeButton(),
+              SizedBox(height: 30),
+              _buildPostCard(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  // Mètode per construir el botó de "m'agrades"
   Widget _buildLikeButton() {
     return IconButton(
       icon: Icon(
-        _isLiked ? Icons.favorite : Icons.favorite_border, // Canvia l'icona segons l'estat
+        _isLiked ? Icons.favorite : Icons.favorite_border,
         size: 38,
+        color: _isLiked ? Colors.red : Colors.grey,
       ),
-      onPressed: _profileLikes, // Crida al mètode _profileLikes
+      onPressed: _profileLikes,
     );
   }
 
-  // Mètode per gestionar l'estat del "like"
   void _profileLikes() {
     setState(() {
-      _isLiked = !_isLiked; // Commutar l'estat de _isLiked
+      _isLiked = !_isLiked;
     });
+  }
+
+  Widget _buildPostCard() {
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: 16),
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Mi primera vez usando InstaDam ;) ',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Image.asset(
+              'assets/images/imagen3.jpg',
+              height: 250,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(height: 10)
+          ],
+        ),
+      ),
+    );
   }
 }
 
-// Classe per la descripció del perfil
 class ProfileDescription extends StatelessWidget {
-  final String user; // Nom de l'usuari
-  final String description; // Descripció del perfil
+  final String user;
+  final String description;
 
-  // Constructor de la classe
-  const ProfileDescription({required this.user, required this.description}); // Usar required
+  const ProfileDescription({required this.user, required this.description});
 
   @override
   Widget build(BuildContext context) {
