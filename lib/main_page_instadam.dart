@@ -85,7 +85,19 @@ class MainPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+          colors: [
+            Colors.pink.shade200,
+            Colors.orange.shade200,
+            Colors.yellow.shade200,
+          ],
+        begin: Alignment.topCenter,
+        end:Alignment.bottomLeft,
+      )
+    ),
+      child: SingleChildScrollView(
       child: Column(
         children: [
           GridView.builder(
@@ -101,7 +113,6 @@ class MainPageBody extends StatelessWidget {
               return LayoutBuilder(
                 builder: (context, constraints) {
                   final containerWidth = constraints.maxWidth;
-
                   return Column(
                     children: [
                       Container(
@@ -178,6 +189,7 @@ class MainPageBody extends StatelessWidget {
           ),
         ],
       ),
+      )
     );
   }
 }

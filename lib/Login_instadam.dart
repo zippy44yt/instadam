@@ -12,21 +12,49 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //para adaptar a la pantalla
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Iniciar Sessió'),
         backgroundColor: Color(0xFFFFFFFF),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body:Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [
+                Colors.pink.shade200,
+                Colors.orange.shade200,
+                Colors.yellow.shade200,
+              ],
+          begin: Alignment.topCenter,
+          end:Alignment.bottomLeft,
+        ),
+      ),
+      child: SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: screenWidth * 0.05,
+          vertical: screenHeight * 0.02,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/images/instadam_logo.png', height: 200),
-            SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.05),
+            Image.asset(
+                'assets/images/instadam_logo.png',
+                height: screenHeight * 0.25,
+            ),
+            SizedBox(height: screenHeight * 0.03),
             Text(
               'InstaDam',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: screenWidth * 0.07,
+                  fontWeight: FontWeight.bold,
+            ),
             ),
             Text(
               'Captura y comparte los momentos del mundo',
@@ -75,6 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+      )
+      )
     );
   }
 }
